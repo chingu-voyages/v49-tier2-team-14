@@ -12,7 +12,7 @@ you like the best.
 
 | Project Idea | Description | Nemanja | Miko | teammate name | teammate name | teammate name | teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| First idea | Description | Brutalist design for UI | | | | | |
+| First idea | Description | | Brutalist design for UI | | | | |
 | Second idea | Description | | | | | | |
 | ... | Description | | | | | | |
 | Last idea | Description | | | | | | |
