@@ -10,7 +10,7 @@ sentences.
 Each team member should Place an 'X' under their name to vote for the ideas 
 you like the best.
 
-| Project Idea | Description | Nemanja | Miko | teammate name | teammate name | teammate name | teammate name |
+| Project Idea | Description | Nemanja | Miko | Lakshmidevi | teammate name | teammate name | teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | First idea | Description | | Brutalist design for UI | | | | |
 | Second idea | Description | | | | | | |
