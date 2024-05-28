@@ -2,30 +2,29 @@ import iro from "@jaames/iro";
 import { useEffect, useRef } from "react";
 import styles from "./color-picker.module.css";
 
-export default function ColorPicker({ value = "#f00", onChange = () => {} }) {
+export default function ColorPicker({ colorPicker, setColors, colors }) {
   const ref = useRef(null);
-  let colorPicker = useRef(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
     if (!colorPicker.current) {
       colorPicker.current = new iro.ColorPicker(ref.current, {
-        width: 320,
-        color: value,
+        width: 250,
+        colors: colors,
+        handleRadius: 9,
+        borderWidth: 1,
+        borderColor: "#fff",
       });
 
-      if (!colorPicker.current) return;
-      colorPicker.current.on("color:change", (color) => {
-        onChange(color.hexString);
+      colorPicker.current.on("color:change", () => {
+        const updatedColors = colorPicker.current.colors.map(
+          (c) => c.hexString
+        );
+        setColors(updatedColors);
       });
-    } else if (value !== colorPicker.current.color.hexString) {
-      // confirm that user input starts with # and is either this format (#ff0) or (#ffff00)
-      if ((value.includes("#") && value.length === 4) || value.length === 7) {
-        colorPicker.current.color.set(value);
-      }
     }
-  }, [value]);
+  }, [colors]);
 
   return (
     <section className={styles.container}>

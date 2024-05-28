@@ -2,32 +2,29 @@ import classes from "./DropdownMenu.module.css";
 import { FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
-const DropdownMenu = ({ setColors, colorPickerRef }) => {
-  const [numberOfColor, setNumberOfColor] = useState("Color for analysis");
+const DropdownMenu = ({ setColors, colorPicker }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const optionsForAnalysis = ["Color for analysis", "One", "Two", "Three"];
+  const optionsForAnalysis = ["One", "Two", "Three"];
+  const options = { One: 1, Two: 2, Three: 3 };
 
-  const clickHandler = (color, index) => {
-    setNumberOfColor(color);
+  const clickHandler = (option) => {
+    const value = options[option];
+    setColors((prevColors) => {
+      let newColors = [...prevColors];
 
-    if (index === 0) index = 1;
-    const colorsOnWheel = colorPickerRef.current.iroInstance.colors.map(
-      (c) => c.hexString
-    );
-    const colorToAdd = ["#ff0000"];
-    if (index === 2) colorToAdd.push("#00ff00");
-    if (index === 3) colorToAdd.push("#0000ff");
-
-    // Add missing colors if they are not already present
-    colorToAdd.forEach((col) => {
-      if (!colorsOnWheel.includes(col)) {
-        colorsOnWheel.push(col);
-        colorPickerRef.current.iroInstance.addColor(col);
+      if (prevColors.length < value) {
+        const additionalColors = ["#00ff00", "#0000ff"];
+        additionalColors.forEach((color) => {
+          let isDuplicate = prevColors.some((prevColor) => prevColor === color);
+          if (!isDuplicate) {
+            newColors.push(color);
+          }
+        });
       }
+      const finalColors = newColors.slice(0, value);
+      colorPicker.current.setColors(finalColors);
+      return finalColors;
     });
-
-    colorPickerRef.current.iroInstance.setColors(colorsOnWheel.slice(0, index));
-    setColors(colorsOnWheel.slice(0, index));
   };
 
   let dropdownOptionClass = classes["dropdown__options"];
@@ -47,15 +44,15 @@ const DropdownMenu = ({ setColors, colorPickerRef }) => {
         className={classes.dropdown}
       >
         <div className={dropdownTitleClass}>
-          <span>{numberOfColor}</span>
+          <h3>Colors for analysis</h3>
           <span className={dropdownIconClass}>
             <FaChevronDown />
           </span>
         </div>
         <div className={dropdownOptionClass}>
-          {optionsForAnalysis.map((color, i) => (
-            <p key={color} onClick={() => clickHandler(color, i)}>
-              {color}
+          {optionsForAnalysis.map((option) => (
+            <p key={option} onClick={() => clickHandler(option)}>
+              {option}
             </p>
           ))}
         </div>

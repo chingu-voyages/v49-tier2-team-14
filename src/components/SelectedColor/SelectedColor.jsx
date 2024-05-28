@@ -1,8 +1,20 @@
 import styles from "./selected-color.module.css";
 
-export default function SelectedColor({ color = "", updateColors = () => {} }) {
-  return (
-    <div className={styles.container}>
+export default function SelectedColor({ colorPicker, colors, setColors }) {
+  const handleColorInputChange = (index, newColor) => {
+    if (newColor.length < 1 || newColor.length > 7) return;
+
+    if (newColor.length === 7 && newColor !== colors[index]) {
+      colorPicker.current.colors[index].set(newColor);
+    } else {
+      const tempColors = [...colors];
+      tempColors[index] = newColor;
+      setColors(tempColors);
+    }
+  };
+
+  return colors.map((color, i) => (
+    <div key={i} className={styles.container}>
       <label className={styles.label}>
         <span
           className={styles.color}
@@ -18,9 +30,9 @@ export default function SelectedColor({ color = "", updateColors = () => {} }) {
         id={`color-}`}
         placeholder="select color"
         value={color}
-        onChange={(event) => updateColors(event.target.value)}
+        onChange={(event) => handleColorInputChange(i, event.target.value)}
         className={styles.input}
       />
     </div>
-  );
+  ));
 }
