@@ -22,12 +22,14 @@ export default function SelectedColor({ colorPicker, colors, setColors }) {
             backgroundColor: color,
           }}
         />
-        <span>Selected color</span>
+        <span>
+          {colors.length === 1 ? "Selected color" : `${i + 1} Selected color`}
+        </span>
       </label>
       <input
         type="text"
-        name={`color-`}
-        id={`color-}`}
+        name={`color-${i + 1}`}
+        id={`color-${i + 1}`}
         placeholder="select color"
         value={color}
         onChange={(event) => handleColorInputChange(i, event.target.value)}

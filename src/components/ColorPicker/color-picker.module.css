@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column-reverse;
   gap: 2rem;
 
@@ -8,7 +10,8 @@
 
 .text {
   color: #d92bff;
-  max-width: 30rem;
+  max-width: 35rem;
+  font-size: 28px;
 }
 
 @media (min-width: 47.8125rem) {

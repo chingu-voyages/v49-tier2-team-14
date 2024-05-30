@@ -6,15 +6,14 @@ export default function ColorPicker({ colorPicker, setColors, colors }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-
     if (!colorPicker.current) {
       colorPicker.current = new iro.ColorPicker(ref.current, {
-        width: 250,
+        width: 400,
         colors: colors,
-        handleRadius: 9,
+        handleRadius: 10,
+        activeHandleRadius: 13,
         borderWidth: 1,
-        borderColor: "#fff",
+        borderColor: "#000",
       });
 
       colorPicker.current.on("color:change", () => {

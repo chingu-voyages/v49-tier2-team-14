@@ -11,19 +11,20 @@ const DropdownMenu = ({ setColors, colorPicker }) => {
     const value = options[option];
     setColors((prevColors) => {
       let newColors = [...prevColors];
+      const additionalColors = ["#00ff00", "#0000ff"];
 
-      if (prevColors.length < value) {
-        const additionalColors = ["#00ff00", "#0000ff"];
+      if (newColors.length > value) {
+        newColors = newColors.slice(0, value);
+      }
+      if (newColors.length < value) {
         additionalColors.forEach((color) => {
-          let isDuplicate = prevColors.some((prevColor) => prevColor === color);
-          if (!isDuplicate) {
+          if (newColors.length < value && !newColors.includes(color)) {
             newColors.push(color);
           }
         });
       }
-      const finalColors = newColors.slice(0, value);
-      colorPicker.current.setColors(finalColors);
-      return finalColors;
+      colorPicker.current.setColors(newColors);
+      return newColors;
     });
   };
 
