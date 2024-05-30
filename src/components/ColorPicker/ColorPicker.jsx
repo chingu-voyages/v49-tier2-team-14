@@ -2,7 +2,7 @@ import iro from "@jaames/iro";
 import { useEffect, useRef } from "react";
 import styles from "./color-picker.module.css";
 
-export default function ColorPicker({ value = "#f00", onChange = () => {} }) {
+export default function ColorPicker({ value = "#f00", harmonyColors=[], onChange = () => {} }) {
   const ref = useRef(null);
   let colorPicker = useRef(null);
 
@@ -25,7 +25,10 @@ export default function ColorPicker({ value = "#f00", onChange = () => {} }) {
         colorPicker.current.color.set(value);
       }
     }
-  }, [value]);
+    if (harmonyColors.length > 0) {
+      colorPicker.current.setColors(harmonyColors);
+    }
+  }, [value,harmonyColors]);
 
   return (
     <section className={styles.container}>

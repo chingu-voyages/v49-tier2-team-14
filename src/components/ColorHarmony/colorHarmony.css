@@ -1,5 +1,6 @@
-.colorharmony {
 
+ 
+ .colorharmony {
     display: flex;
     color: #323033;
     flex-direction: column;
@@ -9,8 +10,17 @@
     margin: 15px;
 }
 
-.colorharmony-dropdownmenu {
-    color: #494646;
+.colorharmony-para {
+    color: hsl(0, 33%, 2%);
+    max-width: 30rem;
+    padding: 0px;
+    margin: 0px;
+    font-size:20px;
+    font-display: bold;
+    font-weight: 700;
+ }
+.colorharmony-dropdownmenu{
+      color: #494646;
     border-color: #D92BFF;
     padding: 10px;
     margin: 0px;
@@ -19,19 +29,28 @@
     box-shadow: 5px 5px 0px 0px #D92BFF;
     height: 40px;
     width: 250px;
-    outline: none;
+    outline: none;  
     
-        }
+         
+} 
+
     .colorharmony-colorDisplay{
-       
         padding: 10px;
         margin-top: 20px;
-        }
-     .color-sample {
-       display:inline-block;
-        padding: 10px;
-        margin: 10px;
-        width: 50px;
-        height: 50px;
-        border-radius: 5px;
     }
+        
+        /* .color-sample {
+           display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+        }  */
+    
+    
+    @media (min-width: 47.8125rem) {
+            .container {
+                flex-direction: row;
+                gap: 4rem;
+            }
+        } 
+ 
