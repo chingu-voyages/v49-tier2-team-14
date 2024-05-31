@@ -1,0 +1,33 @@
+.colorcontext{
+    gap: 0.5rem;
+    padding-left: 12px;
+        margin-bottom: 1rem;
+    }
+    
+
+  .colorcontext-para{
+     color: hsl(0, 33%, 2%);
+        max-width: 30rem;
+        padding: 10px 0px 0px 5px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-display: bold;
+        font-weight:800;
+        gap: 10px;
+
+}
+.colorcontext-input{
+        color:#D9D9D9;
+        background-color: #ffff;
+        border-color: #0000;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 5px;
+        border:2px solid  #828282;
+        box-shadow: 3px 3px 0px 0px #130e14;
+        height: 30px;
+        width: 250px;
+        font-size: 12px;;
+        outline: none;
+
+}

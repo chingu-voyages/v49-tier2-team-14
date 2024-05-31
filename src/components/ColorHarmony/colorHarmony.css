@@ -7,7 +7,7 @@
     align-items: flex-start;
     text-align: center;
     padding: 10px;
-    margin: 15px;
+    margin: 5px;
 }
 
 .colorharmony-para {
@@ -15,26 +15,29 @@
     max-width: 30rem;
     padding: 0px;
     margin: 0px;
-    font-size:20px;
+    font-size:17px;
     font-display: bold;
     font-weight: 700;
  }
 .colorharmony-dropdownmenu{
-      color: #494646;
+    position: relative;
+    color: #494646;
+    background-color: #ffff;
     border-color: #D92BFF;
+    text-align: initial;
     padding: 10px;
     margin: 0px;
     border-radius: 0px;
     border: 10px solid inside #D92BFF;
-    box-shadow: 5px 5px 0px 0px #D92BFF;
-    height: 40px;
+    box-shadow: 2px 2px  #D92BFF;
+    height: 36px;
     width: 250px;
     outline: none;  
+    font-size: 12px;
     
          
 } 
-
-    .colorharmony-colorDisplay{
+ .colorharmony-colorDisplay{
         padding: 10px;
         margin-top: 20px;
     }
