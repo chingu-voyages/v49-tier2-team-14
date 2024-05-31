@@ -2,33 +2,39 @@ import iro from "@jaames/iro";
 import { useEffect, useRef } from "react";
 import styles from "./color-picker.module.css";
 
+<<<<<<< HEAD
 export default function ColorPicker({ value = "#f00", harmonyColors=[], onChange = () => {} }) {
+=======
+export default function ColorPicker({ colorPicker, setColors, colors }) {
+>>>>>>> f65d6713c8f1a301e2e12a52168c3fabf9e24544
   const ref = useRef(null);
-  let colorPicker = useRef(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-
     if (!colorPicker.current) {
       colorPicker.current = new iro.ColorPicker(ref.current, {
-        width: 320,
-        color: value,
+        width: 400,
+        colors: colors,
+        handleRadius: 10,
+        activeHandleRadius: 13,
+        borderWidth: 1,
+        borderColor: "#000",
       });
 
-      if (!colorPicker.current) return;
-      colorPicker.current.on("color:change", (color) => {
-        onChange(color.hexString);
+      colorPicker.current.on("color:change", () => {
+        const updatedColors = colorPicker.current.colors.map(
+          (c) => c.hexString
+        );
+        setColors(updatedColors);
       });
-    } else if (value !== colorPicker.current.color.hexString) {
-      // confirm that user input starts with # and is either this format (#ff0) or (#ffff00)
-      if ((value.includes("#") && value.length === 4) || value.length === 7) {
-        colorPicker.current.color.set(value);
-      }
     }
+<<<<<<< HEAD
     if (harmonyColors.length > 0) {
       colorPicker.current.setColors(harmonyColors);
     }
   }, [value,harmonyColors]);
+=======
+  }, [colors]);
+>>>>>>> f65d6713c8f1a301e2e12a52168c3fabf9e24544
 
   return (
     <section className={styles.container}>

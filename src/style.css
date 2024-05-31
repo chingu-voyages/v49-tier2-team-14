@@ -43,3 +43,10 @@ h6 {
   display: none !important;
 }
 
+<<<<<<< HEAD
+=======
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+>>>>>>> f65d6713c8f1a301e2e12a52168c3fabf9e24544

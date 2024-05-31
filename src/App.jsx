@@ -4,13 +4,13 @@ import MainContent from "./components/MainContent/MainContent";
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Header />
       <h1>Hello I am a test app</h1>
      <MainContent />
      
       <Footer />
-    </>
+    </div>
   );
 }
 

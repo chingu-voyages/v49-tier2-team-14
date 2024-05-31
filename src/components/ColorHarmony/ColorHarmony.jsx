@@ -4,15 +4,15 @@ import Color from 'color';
 import './colorHarmony.css';
 
 
-const ColorHarmony = ({baseColor,setHarmonyColors,harmonyColors}) => {
-    const [selectedcolorHarmony, setSelectedColorHarmony] = useState('complementary');
+const ColorHarmony = ({ setHarmonyColors, harmonyColors }) => {
+    const [selectedcolorHarmony, setSelectedColorHarmony] = useState('');
    
-     useEffect(() => {
-    handleColorsChange(selectedcolorHarmony)
-     },[baseColor, selectedcolorHarmony]);
+    // useEffect(() => {
+    //     handleColorsChange(selectedcolorHarmony)
+    // }, [baseColor, selectedcolorHarmony]);
+    
 
-
-     // this function to handle the changes in the color harmony
+   // this function to handle the changes in the color harmony
     const handleColorHarmonyChange = (event) => {
         const harmony = event.target.value;
         setSelectedColorHarmony(harmony);
@@ -21,26 +21,26 @@ const ColorHarmony = ({baseColor,setHarmonyColors,harmonyColors}) => {
     }
       
    // This function to update the colors based on the harmoney type
-    const handleColorsChange = (harmonyType) => {
-          // Example base color (you can change this)
-        const harmonies = getColorHarmony(baseColor, harmonyType);
-        setHarmonyColors(harmonies);
-    } 
-    const getColorHarmony = (baseColor, harmonyType) => {
-        //placeholder for the function to get the colorHarmony
-        const base = Color(baseColor);
-        const harmonies = {
-            complementary: [baseColor, base.rotate(180).hex()],
-            monochromatic: [baseColor, base.rotate(30).hex(), base.rotate(60).hex()],
-            analogous: [baseColor, base.rotate(30).hex(), base.rotate(-30).hex()],
-            spiltcomplements: [baseColor, base.rotate(150).hex(), base.rotate(-150).hex()],
-            triadic: [baseColor, base.rotate(120).hex(), base.rotate(-120).hex()],
-            tetradic: [baseColor, base.rotate(90).hex(), base.rotate(180).hex(), base.rotate(270).hex()],
+    // const handleColorsChange = (harmonyType) => {
+    //       // Example base color (you can change this)
+    //     const harmonies = getColorHarmony(baseColor, harmonyType);
+    //     setHarmonyColors(harmonies);
+    // } 
+    // const getColorHarmony = (baseColor, harmonyType) => {
+    //     //placeholder for the function to get the colorHarmony
+    //     const base = Color(baseColor);
+    //     const harmonies = {
+    //         complementary: [baseColor, base.rotate(180).hex()],
+    //         monochromatic: [baseColor, base.rotate(30).hex(), base.rotate(60).hex()],
+    //         analogous: [baseColor, base.rotate(30).hex(), base.rotate(-30).hex()],
+    //         spiltcomplements: [baseColor, base.rotate(150).hex(), base.rotate(-150).hex()],
+    //         triadic: [baseColor, base.rotate(120).hex(), base.rotate(-120).hex()],
+    //         tetradic: [baseColor, base.rotate(90).hex(), base.rotate(180).hex(), base.rotate(270).hex()],
     
-        };
-        return harmonies[harmonyType] || [];
+    //     };
+    //     return harmonies[harmonyType] || [];
  
-    };
+    // };
      
   return (
     
@@ -55,11 +55,11 @@ const ColorHarmony = ({baseColor,setHarmonyColors,harmonyColors}) => {
                 <option value="tetradic"> Tetradic</option>
                 </select>
            
-            <div id=" colorharmony-colorDisplay">
+            {/* <div id=" colorharmony-colorDisplay">
                 {harmonyColors.map((color, index) => (
                     <div key ={index} className='color-sample' style={{backgroundColor:color}}></div>
                 ))}
-        </div>
+        </div> */}
         
         </div>
     );
