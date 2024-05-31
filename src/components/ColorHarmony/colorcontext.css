@@ -1,7 +1,8 @@
 .colorcontext{
     gap: 0.5rem;
     padding-left: 12px;
-        margin-bottom: 1rem;
+    margin-bottom: 1rem;
+   color:#828282;
     }
     
 
@@ -17,9 +18,8 @@
 
 }
 .colorcontext-input{
-        color:#D9D9D9;
-        background-color: #ffff;
-        border-color: #0000;
+        color:#000;
+       border-color: #0000;
         padding: 10px;
         margin: 5px;
         border-radius: 5px;
@@ -27,7 +27,7 @@
         box-shadow: 3px 3px 0px 0px #130e14;
         height: 30px;
         width: 250px;
-        font-size: 12px;;
+        font-size: 15px;;
         outline: none;
 
 }
