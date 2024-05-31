@@ -1,9 +1,44 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: purple;
-    height: 100vh;
-}
-
-#root {
+:root {
+    line-height: 1.5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
     margin: 0;
-}
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  *::after,
+  *::before {
+    box-sizing: inherit;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Rasa", serif;
+  }
+  
+  #root {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+  
+  .IroSlider {
+    display: none !important;
+  }
