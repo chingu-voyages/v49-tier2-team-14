@@ -42,3 +42,8 @@ h6 {
 .IroSlider {
   display: none !important;
 }
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+}

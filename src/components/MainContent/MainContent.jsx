@@ -1,18 +1,27 @@
 import { useState } from "react";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import SelectedColor from "../SelectedColor/SelectedColor";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import { useRef } from "react";
+import styles from "./main.module.css";
 
 export default function MainContent() {
-  const [color, setColor] = useState("#ff0");
+  const [colors, setColors] = useState(["#ff0000"]);
+  let colorPicker = useRef(null);
 
-  const updateColors = (value) => {
-    setColor(value);
-  };
   return (
     <main>
-      <ColorPicker value={color} onChange={updateColors} />
-
-      <SelectedColor color={color} updateColors={updateColors} />
+      <ColorPicker
+        colorPicker={colorPicker}
+        setColors={setColors}
+        colors={colors}
+      />
+      <DropdownMenu colorPicker={colorPicker} setColors={setColors} />
+      <SelectedColor
+        colorPicker={colorPicker}
+        colors={colors}
+        setColors={setColors}
+      />
     </main>
   );
 }

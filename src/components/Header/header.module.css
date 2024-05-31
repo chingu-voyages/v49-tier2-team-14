@@ -1,5 +1,6 @@
 .header {
-  padding: 2rem 1rem;
+  padding-bottom: 50px;
+  padding-top: 20px;
 }
 
 .heading {
@@ -7,7 +8,7 @@
   -webkit-text-fill-color: #5afd0d;
   -webkit-text-stroke-color: #1a1b1d;
   -webkit-text-stroke-width: 0.5px;
-  font-size: 4rem;
+  font-size: 76px;
   font-weight: 700;
   text-align: center;
   font-style: italic;
@@ -17,17 +18,19 @@
 .subheading {
   color: #6f2bff;
   text-align: center;
+  font-size: 34px;
   font-weight: 700;
   font-style: italic;
-  margin-left: 3rem;
+  margin-left: 5.5rem;
+  margin-bottom: 30px;
 }
 
 .description {
-  margin-block: 2rem;
+  font-size: 22px;
 }
 
 @media (min-width: 47.8125rem) {
   .subheading {
-    margin-left: 7rem;
+    margin-left: 10rem;
   }
 }
