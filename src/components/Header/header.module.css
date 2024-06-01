@@ -1,6 +1,7 @@
 .header {
   padding-bottom: 50px;
   padding-top: 20px;
+ 
 }
 
 .heading {
@@ -13,6 +14,7 @@
   text-align: center;
   font-style: italic;
   line-height: 1.2;
+  margin-right: 5.5rem;
 }
 
 .subheading {
@@ -21,12 +23,13 @@
   font-size: 34px;
   font-weight: 700;
   font-style: italic;
-  margin-left: 5.5rem;
-  margin-bottom: 30px;
+  margin-left: 10rem;
+  gap:0.5rem;
 }
 
 .description {
   font-size: 22px;
+  margin: 20px;;
 }
 
 @media (min-width: 47.8125rem) {

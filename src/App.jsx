@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <h1>Hello I am a test app</h1>
+      <h1 style={{alignItems:"center",padding:"20px "}}>Hello I am a test app</h1>
      <MainContent />
      
       <Footer />

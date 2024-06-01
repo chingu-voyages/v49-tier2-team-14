@@ -4,11 +4,14 @@
   align-items: center;
   flex-direction: column-reverse;
   gap: 2rem;
-
-  padding: 0 1rem;
+  padding: 2rem;
+ margin-left:100px;;
 }
 
 .text {
+  display: flex;
+  margin-top: -200px;
+  margin-left:300px;
   color: #d92bff;
   max-width: 35rem;
   font-size: 28px;

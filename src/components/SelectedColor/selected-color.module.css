@@ -1,5 +1,6 @@
 .container {
   margin: 1rem;
+  padding: 1rem;
 }
 
 .label {
@@ -25,4 +26,5 @@
   border-radius: 0.5rem;
   width: 250px;
   font-size: 16px;
+  outline: none;
 }

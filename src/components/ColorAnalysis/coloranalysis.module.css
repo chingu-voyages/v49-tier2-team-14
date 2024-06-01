@@ -3,16 +3,18 @@
   width: 250px;
   border: 1px solid #d92bff;
   outline: none;
-  padding: 3px 10px;
+  padding: 10px;
   box-shadow: 4px 4px #d92bff;
   color: #828282;
   margin: 30px 10px;
+  ;
 }
 
 .dropdown__title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
 }
 
 .active-title {
@@ -50,4 +52,7 @@
 .active-icon {
   transform: rotate(180deg);
   transition: 0.2s ease;
+}
+.dropdown__option:hover {
+  background-color: #0000;
 }

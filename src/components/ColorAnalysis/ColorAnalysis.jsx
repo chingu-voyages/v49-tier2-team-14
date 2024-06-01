@@ -1,8 +1,8 @@
-import classes from "./DropdownMenu.module.css";
+import classes from "./coloranalysis.module.css";
 import { FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
-const DropdownMenu = ({ setColors, colorPicker }) => {
+const ColorAnalysis = ({ setColors, colorPicker }) => {
   const [showOptions, setShowOptions] = useState(false);
   const optionsForAnalysis = ["One", "Two", "Three"];
   const options = { One: 1, Two: 2, Three: 3 };
@@ -45,7 +45,7 @@ const DropdownMenu = ({ setColors, colorPicker }) => {
         className={classes.dropdown}
       >
         <div className={dropdownTitleClass}>
-          <h3>Colors for analysis</h3>
+          <h3>Number of colors</h3>
           <span className={dropdownIconClass}>
             <FaChevronDown />
           </span>
@@ -62,4 +62,4 @@ const DropdownMenu = ({ setColors, colorPicker }) => {
   );
 };
 
-export default DropdownMenu;
+export default ColorAnalysis;

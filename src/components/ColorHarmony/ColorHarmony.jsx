@@ -1,69 +1,64 @@
+    
 
 import  { useState, useEffect } from 'react';
-import Color from 'color';
+import { FaChevronDown } from "react-icons/fa";
 import './colorHarmony.css';
 
+const ColorHarmony = () => {
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedColorHarmony, setSelectedColorHarmony] = useState('');
 
-const ColorHarmony = ({ setHarmonyColors, harmonyColors }) => {
-    const [selectedcolorHarmony, setSelectedColorHarmony] = useState('');
-   
-    // useEffect(() => {
-    //     handleColorsChange(selectedcolorHarmony)
-    // }, [baseColor, selectedcolorHarmony]);
-    
+  const optionsForHormony = [
+    { label: 'Complementary', value: 'complementary' },
+    { label: 'Monochromatic', value: 'monochromatic' },
+    { label: 'Analogous', value: 'analogous' },
+    { label: 'Split Complements', value: 'splitcomplements' },
+    { label: 'Triadic', value: 'triadic' },
+    { label: 'Tetradic', value: 'tetradic' },
+  ];
 
-   // this function to handle the changes in the color harmony
-    const handleColorHarmonyChange = (event) => {
-        const harmony = event.target.value;
-        setSelectedColorHarmony(harmony);
-    //    handleColorsChange(harmony);
+  const handleColorHarmonyChange = (option) => {
+    setSelectedColorHarmony(option);
+    setShowOptions(false);
+  };
 
-    }
-      
-   // This function to update the colors based on the harmoney type
-    // const handleColorsChange = (harmonyType) => {
-    //       // Example base color (you can change this)
-    //     const harmonies = getColorHarmony(baseColor, harmonyType);
-    //     setHarmonyColors(harmonies);
-    // } 
-    // const getColorHarmony = (baseColor, harmonyType) => {
-    //     //placeholder for the function to get the colorHarmony
-    //     const base = Color(baseColor);
-    //     const harmonies = {
-    //         complementary: [baseColor, base.rotate(180).hex()],
-    //         monochromatic: [baseColor, base.rotate(30).hex(), base.rotate(60).hex()],
-    //         analogous: [baseColor, base.rotate(30).hex(), base.rotate(-30).hex()],
-    //         spiltcomplements: [baseColor, base.rotate(150).hex(), base.rotate(-150).hex()],
-    //         triadic: [baseColor, base.rotate(120).hex(), base.rotate(-120).hex()],
-    //         tetradic: [baseColor, base.rotate(90).hex(), base.rotate(180).hex(), base.rotate(270).hex()],
-    
-    //     };
-    //     return harmonies[harmonyType] || [];
- 
-    // };
-     
+  useEffect(() => {
+    setSelectedColorHarmony('');
+  }, []);
+
   return (
-    
-        <div className='colorharmony'>
-           <p className='colorharmony-para'>color harmony..</p>
-             <select  className="colorharmony-dropdownmenu" value={selectedcolorHarmony} onChange={handleColorHarmonyChange}>
-                <option value="complementary"> Complementary </option>
-                <option value="monochromatic"> Monochromatic </option>
-                <option value="analogous"> Analogous </option>
-                <option value="spiltcomplements"> Spilt Complements </option>
-                <option value="triadic">Triadic </option>
-                <option value="tetradic"> Tetradic</option>
-                </select>
-           
-            {/* <div id=" colorharmony-colorDisplay">
-                {harmonyColors.map((color, index) => (
-                    <div key ={index} className='color-sample' style={{backgroundColor:color}}></div>
-                ))}
-        </div> */}
+    <div className="colorharmony">
+      <div
+        onClick={() => setShowOptions(!showOptions)}
+        className="colorharmony-dropdownmenu"
+      >
+        < div className="colorharmony-title">
+        {/* <h3>Color Harmony</h3> */}
+        {/* this line of code will dispaly the selected color harmony  in box if we don't want display we can remove this and comment out above h3 tag*/}
+          <h3>{selectedColorHarmony ? optionsForHormony.find(opt => opt.value === selectedColorHarmony).label : 'Color Harmony'}</h3> 
         
         </div>
-    );
+        <span className="dropdown__icon">
+          <FaChevronDown />
+        </span>
+      </div>
+      {showOptions && (
+        <div className="dropdown__options">
+          {optionsForHormony.map((option) => (
+            <p
+              key={option.value}
+              onClick={() => handleColorHarmonyChange(option.value)}
+              className="dropdown__option"
+            >
+              {option.label}
+            </p>
+          ))}
+              </div>
+               
+      )}
+    </div>
+ 
+          );
 };
 
-export default ColorHarmony;     
-
+export default ColorHarmony;
