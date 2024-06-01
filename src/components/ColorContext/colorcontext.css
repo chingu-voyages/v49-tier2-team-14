@@ -1,9 +1,11 @@
 .colorcontext{
-     margin: 1rem;
+       margin: 1rem;
         padding: 1rem;
+      
    
 }
 .colorcontext-para{
+        
         display: flex;
         align-items: center;
         font-weight: 700;
@@ -11,14 +13,26 @@
         gap: 0.5rem;
         margin-bottom: 1rem;
         padding-left: 10px;
+
 }
 .colorcontext-input{
-       
-        
-        border: 2px solid #898989;
+        border:2px solid #898989;
         box-shadow: 2px 2px #000;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        width: 250px;
-        font-size: 16px;
-}
+         padding:0.5rem;
+         border-radius: 0.5rem;
+        font-size: 14px;
+        height:40px;  
+        width: 270px;
+        overflow: hidden;  
+        resize:none; 
+        box-Sizing: border-box; 
+         outline:none;  
+       
+ }
+ .colorcontext-input::placeholder {
+        line-height:1;
+        vertical-align: top;
+        white-space: pre-wrap;
+
+        
+} 

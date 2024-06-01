@@ -22,9 +22,11 @@
 .input {
   border: 1px solid #d92bff;
   box-shadow: 2px 2px #d92bff;
-  padding: 0.5rem 1rem;
+  padding-left:  1rem;
   border-radius: 0.5rem;
   width: 250px;
+  height:40px;
   font-size: 16px;
   outline: none;
+  box-sizing: border-box;
 }
