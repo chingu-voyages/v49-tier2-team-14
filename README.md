@@ -36,7 +36,8 @@ coding!
 
 - Miko: [GitHub](https://github.com/jamienorthman) / [LinkedIn](https://linkedin.com/in/miko-ann-jeffries)
 - Nemanja: [GitHub](https://github.com/nemanjagradic) / [LinkedIn](https://www.linkedin.com/in/nemanja-gradic-33230b1bb/)
+- Lakshmidevi:[GitHub](https://github.com/devi-lakshmi) / [LinkedIn](https://www.linkedin.com/in/lakshmidevikanala)
 
-  ...
+- Efezino : [GitHub](https://github.com/efezinoidisi) / [LinkedIn](https://linkedin.com/in/endurance-idisi)
 
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)

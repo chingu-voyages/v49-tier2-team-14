@@ -1,19 +1,22 @@
 .container {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 2rem;
-  
-    padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column-reverse;
+  gap: 2rem;
+
+  padding: 0 1rem;
 }
-  
-  .text {
-    color: #d92bff;
-    max-width: 30rem;
+
+.text {
+  color: #d92bff;
+  max-width: 35rem;
+  font-size: 28px;
 }
-  
-  @media (min-width: 47.8125rem) {
-    .container {
-      flex-direction: row;
-      gap: 4rem;
-    }
+
+@media (min-width: 47.8125rem) {
+  .container {
+    flex-direction: row;
+    gap: 4rem;
+  }
 }

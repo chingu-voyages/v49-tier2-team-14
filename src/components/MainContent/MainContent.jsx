@@ -1,8 +1,9 @@
 import { useState } from "react";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import SelectedColor from "../SelectedColor/SelectedColor";
-import DropdownMenu from "../DropdownMenu";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { useRef } from "react";
+import styles from "./main.module.css";
 
 export default function MainContent() {
   const [colors, setColors] = useState(["#ff0000"]);
@@ -21,9 +22,6 @@ export default function MainContent() {
         colors={colors}
         setColors={setColors}
       />
-      <button>
-        Let's Glow!
-      </button>
     </main>
   );
 }
