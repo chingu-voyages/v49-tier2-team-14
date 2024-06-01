@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import SelectedColor from "../SelectedColor/SelectedColor";
 import ColorHarmony from "../ColorHarmony/ColorHarmony";
-import ColorContext from "../ColorHarmony/ColorContext";
+import ColorContext from "../ColorContext/ColorContext";
 import ColorAnalysis from '../ColorAnalysis/ColorAnalysis';
 import styles  from './main.module.css';
 

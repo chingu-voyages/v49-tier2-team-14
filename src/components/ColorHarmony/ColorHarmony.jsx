@@ -8,7 +8,7 @@ const ColorHarmony = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedColorHarmony, setSelectedColorHarmony] = useState('');
 
-  const optionsForHormony = [
+  const optionsForHarmony = [
     { label: 'Complementary', value: 'complementary' },
     { label: 'Monochromatic', value: 'monochromatic' },
     { label: 'Analogous', value: 'analogous' },
@@ -35,7 +35,7 @@ const ColorHarmony = () => {
         < div className="colorharmony-title">
         {/* <h3>Color Harmony</h3> */}
         {/* this line of code will dispaly the selected color harmony  in box if we don't want display we can remove this and comment out above h3 tag*/}
-          <h3>{selectedColorHarmony ? optionsForHormony.find(opt => opt.value === selectedColorHarmony).label : 'Color Harmony'}</h3> 
+          <h3>{selectedColorHarmony ? optionsForHarmony.find(opt => opt.value === selectedColorHarmony).label : 'Color Harmony'}</h3> 
         
         </div>
         <span className="dropdown__icon">
@@ -44,7 +44,7 @@ const ColorHarmony = () => {
       </div>
       {showOptions && (
         <div className="dropdown__options">
-          {optionsForHormony.map((option) => (
+          {optionsForHarmony.map((option) => (
             <p
               key={option.value}
               onClick={() => handleColorHarmonyChange(option.value)}
