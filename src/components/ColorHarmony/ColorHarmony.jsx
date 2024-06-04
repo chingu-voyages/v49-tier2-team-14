@@ -48,8 +48,7 @@ const ColorHarmony = () => {
             <p
               key={option.value}
               onClick={() => handleColorHarmonyChange(option.value)}
-              className="dropdown__option"
-            >
+               className="dropdown__option" >
               {option.label}
             </p>
           ))}

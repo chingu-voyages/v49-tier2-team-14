@@ -1,16 +1,14 @@
+/* main.module.css */
 
+/* Container to center content vertically and horizontally */
 .main {
     display: flex;
-   
-    } 
 
+}
 
- .container1 {
+ .container1,.container2 {
     display: flex;
-    
-
-    
-align-items: flex-start;;
+   align-items: flex-start;;
 }
 
 
@@ -19,10 +17,13 @@ align-items: flex-start;;
    display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
+
 }
+
 .item2 {
    align-self: center;
-   margin:12px;
+   margin-left:30px;
+   margin-top: 7px;
 } 
 .item3{
     display: flex;
@@ -35,3 +36,24 @@ align-items: flex-start;;
 }
 
     
+.item4 {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    gap: 7em;
+    flex-wrap: wrap;
+    font-size: 12px;
+    padding: 10px;
+    margin-left:20px;
+}
+@media (min-width: 47.8125rem) {
+    .container {
+        width: 80%;
+       
+        flex-direction: row;
+        justify-content: space-between;
+
+       
+    }
+
+}

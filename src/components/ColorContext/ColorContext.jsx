@@ -1,5 +1,3 @@
-
-
 import  { useState, useRef } from 'react';
 import './colorcontext.css';
 
@@ -17,7 +15,7 @@ const ColorContext = () => {
         setContext(e.target.value);}
     return (
     <div className="colorcontext">
-    <p className="colorcontext-para">Select context</p>
+    <h1 className="colorcontext-h1"> Context</h1>
         <textarea
           ref={textareaRef}
           className="colorcontext-input"
