@@ -1,3 +1,4 @@
+
 .dropdown {
   position: relative;
   width: 250px;
@@ -6,7 +7,7 @@
   padding: 10px;
   box-shadow: 4px 4px #d92bff;
   color: #828282;
-  margin: 30px 10px;
+  /* margin: 30px 10px; */
 }
 
 .dropdown__title {
@@ -14,14 +15,11 @@
   justify-content: space-between;
   align-items: center;
   font-size: 15px;
+  color: #828282;
 }
 
 .active-title {
   border-bottom: 2px solid #828282;
-}
-
-.dropdown__title {
-  color: #828282;
 }
 
 .dropdown__icon {
@@ -47,11 +45,11 @@
 .active-options {
   display: block;
 }
-
-.active-icon {
+ 
+   .active-icon {
   transform: rotate(180deg);
   transition: 0.2s ease;
 }
-.dropdown__option:hover {
-  background-color: #0000;
+.dropdown__options p:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
