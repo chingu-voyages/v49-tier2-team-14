@@ -16,7 +16,7 @@ const ColorContext = () => {
   };
   return (
     <div className="colorcontext">
-      <h1>Context</h1>
+      <h1 className="colorcontext-h1">Context</h1>
       <textarea
         ref={textareaRef}
         className="colorcontext-input"
