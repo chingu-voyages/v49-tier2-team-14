@@ -32,8 +32,4 @@
   margin: 20px;;
 }
 
-@media (min-width: 47.8125rem) {
-  .subheading {
-    margin-left: 10rem;
-  }
-}
+

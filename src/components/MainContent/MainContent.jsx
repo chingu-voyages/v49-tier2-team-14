@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import SelectedColor from "../SelectedColor/SelectedColor";
 import ColorHarmony from "../ColorHarmony/ColorHarmony";
-import ColorContext from "../ColorHarmony/ColorContext";
+import ColorContext from "../ColorContext/ColorContext";
 import ColorAnalysis from '../ColorAnalysis/ColorAnalysis';
 import styles  from './main.module.css';
 
@@ -36,15 +36,17 @@ export default function MainContent() {
           <ColorContext />
       </div>
           </div>
-       
+        <div className={styles.container2}>
       <div className={styles.item3} >
        
         <ColorAnalysis colorPicker={colorPicker} setColors={setColors} />
-      
+       </div> 
+        <div className={styles.item4}>
       <ColorHarmony />
       </div>
-          
-        </div>
+        
+      </div>
+      </div>
     </main>
   
       );

@@ -3,58 +3,27 @@
 /* Container to center content vertically and horizontally */
 .main {
     display: flex;
-    /* justify-content: space-evenly;
-    align-items: flex-start;
-    align-items: center;
-    min-height: 100vh; */
-    /* flex-wrap: wrap;
-    align-content: space-around;
-    gap:1em; */
 
 }
 
-/* Main flex container for the content */
-/* .container {
-   display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-  
-    padding: 20px;
-   
-   
- } */
-
-
- .container1 {
+ .container1,.container2 {
     display: flex;
-    /* justify-content: space-evenly;
-    align-items: flex-start;
-
-    width: 100%;
-    margin-top: 20px;
-
-    */
-align-items: flex-start;;
+   align-items: flex-start;;
 }
 
-/* Individual flex item with margin adjustments */
+
 .ittem1 { 
     
    display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
 
-    /* width: 100%;
-    margin-top: 20px; */
 }
 
-/* Another flex item, typically for DropdownMenu and ColorHarmony */
 .item2 {
    align-self: center;
-   margin:12px;
+   margin-left:30px;
+   margin-top: 7px;
 } 
 .item3{
     display: flex;
@@ -67,3 +36,24 @@ align-items: flex-start;;
 }
 
     
+.item4 {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    gap: 7em;
+    flex-wrap: wrap;
+    font-size: 12px;
+    padding: 10px;
+    margin-left:20px;
+}
+@media (min-width: 47.8125rem) {
+    .container {
+        width: 80%;
+       
+        flex-direction: row;
+        justify-content: space-between;
+
+       
+    }
+
+}

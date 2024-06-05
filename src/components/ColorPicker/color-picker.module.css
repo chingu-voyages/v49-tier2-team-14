@@ -5,21 +5,26 @@
   flex-direction: column-reverse;
   gap: 2rem;
   padding: 2rem;
- margin-left:100px;;
+
+ 
 }
 
 .text {
   display: flex;
-  margin-top: -200px;
-  margin-left:300px;
+ 
   color: #d92bff;
   max-width: 35rem;
-  font-size: 28px;
+  font-size: 1.7rem;
 }
 
-@media (min-width: 47.8125rem) {
+ @media (min-width: 47.8125rem) {
   .container {
+    width: 80%;
+    margin-inline:auto;
     flex-direction: row;
-    gap: 4rem;
+    justify-content: space-between;
+   
+    gap: 10rem;
   }
-}
+
+} 
