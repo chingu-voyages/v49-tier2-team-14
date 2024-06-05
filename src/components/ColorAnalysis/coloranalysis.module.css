@@ -4,10 +4,13 @@
   width: 250px;
   border: 1px solid #d92bff;
   outline: none;
-  padding: 10px;
+  padding: 7px 10px;
   box-shadow: 4px 4px #d92bff;
   color: #828282;
+<<<<<<< HEAD
   /* margin: 30px 10px; */
+=======
+>>>>>>> 818d9fa507a8f4d4ffda37435afef3f48c611888
 }
 
 .dropdown__title {
@@ -45,6 +48,7 @@
 .active-options {
   display: block;
 }
+<<<<<<< HEAD
  
    .active-icon {
   transform: rotate(180deg);
@@ -53,3 +57,13 @@
 .dropdown__options p:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+=======
+
+.active-icon {
+  transform: rotate(180deg) translateY(5px);
+  transition: 0.2s ease;
+}
+.dropdown__option:hover {
+  background-color: #0000;
+}
+>>>>>>> 818d9fa507a8f4d4ffda37435afef3f48c611888

@@ -31,8 +31,7 @@ h4,
 h5,
 h6 {
   font-family: "Rasa", serif;
-  padding:0px;
-  /* margin-left:200px; */
+  padding: 0px;
 }
 
 #root {
@@ -46,6 +45,6 @@ h6 {
 }
 
 .container {
-  width: 20;
+  width: 80%;
   margin: 0 auto;
 }
