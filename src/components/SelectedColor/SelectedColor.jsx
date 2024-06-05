@@ -14,7 +14,7 @@ export default function SelectedColor({ colorPicker, colors, setColors }) {
   };
 
   return colors.map((color, i) => (
-    <div key={i} className={styles.container}>
+    <div key={i} className={styles["selected-color"]}>
       <label className={styles.label}>
         <span
           className={styles.color}
@@ -22,9 +22,9 @@ export default function SelectedColor({ colorPicker, colors, setColors }) {
             backgroundColor: color,
           }}
         />
-        <span>
+        <h1>
           {colors.length === 1 ? "Selected color" : `${i + 1} Selected color`}
-        </span>
+        </h1>
       </label>
       <input
         type="text"
