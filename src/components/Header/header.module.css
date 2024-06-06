@@ -1,6 +1,7 @@
 .header {
   padding-bottom: 50px;
   padding-top: 20px;
+ 
 }
 
 .heading {
@@ -23,10 +24,12 @@
   font-weight: 700;
   font-style: italic;
   margin-left: 10rem;
-  gap: 0.5rem;
+  gap:0.5rem;
 }
 
 .description {
   font-size: 22px;
-  margin: 20px 40px;
+  margin: 20px;;
 }
+
+

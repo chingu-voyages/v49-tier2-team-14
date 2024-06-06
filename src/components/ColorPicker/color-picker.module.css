@@ -2,19 +2,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column-reverse;
   gap: 2rem;
-  margin-bottom: 40px;
+  padding: 2rem;
+
+ 
 }
 
 .text {
   display: flex;
+ 
   color: #d92bff;
+  max-width: 35rem;
   font-size: 1.7rem;
 }
 
-@media (min-width: 47.8125rem) {
+ @media (min-width: 47.8125rem) {
   .container {
+    width: 80%;
+    margin-inline:auto;
+    flex-direction: row;
     justify-content: space-between;
+   
     gap: 10rem;
   }
-}
+
+} 
