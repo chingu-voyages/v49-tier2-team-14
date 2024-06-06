@@ -39,10 +39,11 @@ const ColorAnalysis = ({ setColors, colorPicker }) => {
   }
 
   return (
-    <div className={classes.analysis}>
+    <>
       <div
         onClick={() => setShowOptions(!showOptions)}
         className={classes.dropdown}
+        style={{ height: showOptions ? "" : "40px" }}
       >
         <div className={dropdownTitleClass}>
           <h3>Number of colors</h3>
@@ -58,7 +59,7 @@ const ColorAnalysis = ({ setColors, colorPicker }) => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
