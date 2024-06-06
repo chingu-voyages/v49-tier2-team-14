@@ -1,13 +1,11 @@
-
 .dropdown {
   position: relative;
   width: 250px;
   border: 1px solid #d92bff;
   outline: none;
-  padding:  10px;
+  padding: 7px 10px;
   box-shadow: 4px 4px #d92bff;
   color: #828282;
-  /* margin: 30px 10px; */
 }
 
 .dropdown__title {
@@ -45,11 +43,11 @@
 .active-options {
   display: block;
 }
- 
-   .active-icon {
-  transform: rotate(180deg);
+
+.active-icon {
+  transform: rotate(180deg) translateY(5px);
   transition: 0.2s ease;
 }
-.dropdown__options p:hover {
-  background: rgba(0, 0, 0, 0.1);
+.dropdown__option:hover {
+  background-color: #0000;
 }

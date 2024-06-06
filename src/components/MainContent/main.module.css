@@ -1,18 +1,11 @@
-
+<<<<<<< HEAD
 .main {
     display: flex;
-    margin-left:2rem;
-
 }
-
- .container1,.container2 {
+.container1,.container2 {
     display: flex;
-   align-items: flex-start;
-   margin-bottom:100px;
-   gap:1rem;
+   align-items: flex-start;;
 }
-
-
 .ittem1 { 
     
    display: flex;
@@ -23,21 +16,18 @@
 
 .item2 {
    align-self: center;
-   margin-left:50px;
-   margin-top: -30px;
+   margin-left:35px;
+   margin-top: 7px;
 } 
 .item3{
     display: flex;
-        align-items: center;
-        align-content: flex-start;
-        flex-wrap: wrap;
-        font-size: 12px;
-        padding: 10px;
-        margin-left:-10px;
-    }
-
-
-    
+    align-items: center;
+    align-content: flex-start;
+    gap:7em;
+    flex-wrap: wrap;
+    font-size:12px;
+    padding:30px;
+}
 .item4 {
     display: flex;
     align-items: center;
@@ -45,19 +35,23 @@
     gap: 7em;
     flex-wrap: wrap;
     font-size: 12px;
-    padding: 10px;
-    margin-left:5rem;
+    padding: 25px;
+    margin-left:26px;
 }
 @media (min-width: 47.8125rem) {
     .container {
-    width: 80%;
-        /* margin-inline: auto; */
-        flex-direction: column;
+        width: 80%;
+       flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
-        gap: 1rem;
 
        
     }
 
 }
+=======
+.row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+>>>>>>> 818d9fa507a8f4d4ffda37435afef3f48c611888
