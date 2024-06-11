@@ -1,5 +1,22 @@
+.main-content {
+  padding-bottom: 100px;
+}
+
 .row {
   display: flex;
+  align-items: flex-start;
   gap: 40px;
-  margin-bottom: 50px;
+}
+
+.submit-button {
+  width: 250px;
+  height: 50px;
+  background: #d92bff;
+  border: 2px solid #000;
+  box-shadow: 4px 4px #000;
+  border-radius: 0.5rem;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  margin-top: 40px;
 }

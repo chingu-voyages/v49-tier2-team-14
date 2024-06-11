@@ -2,30 +2,21 @@ import classes from "./coloranalysis.module.css";
 import { FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
 
-const ColorAnalysis = ({ setColors, colorPicker }) => {
+const ColorAnalysis = ({ setNumberOfColors, setColors, colorPickerRef }) => {
   const [showOptions, setShowOptions] = useState(false);
   const optionsForAnalysis = ["One", "Two", "Three"];
-  const options = { One: 1, Two: 2, Three: 3 };
 
-  const clickHandler = (option) => {
-    const value = options[option];
-    setColors((prevColors) => {
-      let newColors = [...prevColors];
-      const additionalColors = ["#00ff00", "#0000ff"];
+  const clickHandler = (index) => {
+    setShowOptions(false);
+    const colorRows = index + 1;
+    setNumberOfColors(colorRows);
 
-      if (newColors.length > value) {
-        newColors = newColors.slice(0, value);
-      }
-      if (newColors.length < value) {
-        additionalColors.forEach((color) => {
-          if (newColors.length < value && !newColors.includes(color)) {
-            newColors.push(color);
-          }
-        });
-      }
-      colorPicker.current.setColors(newColors);
-      return newColors;
-    });
+    const colorToAdd = ["#ff0000"];
+    if (colorRows >= 2) colorToAdd.push("#00ff00");
+    if (colorRows >= 3) colorToAdd.push("#0000ff");
+
+    setColors(colorToAdd.slice(0, colorRows));
+    colorPickerRef.current.setColors(colorToAdd.slice(0, colorRows));
   };
 
   let dropdownOptionClass = classes["dropdown__options"];
@@ -39,27 +30,26 @@ const ColorAnalysis = ({ setColors, colorPicker }) => {
   }
 
   return (
-    <>
+    <div className={classes.dropdown}>
       <div
         onClick={() => setShowOptions(!showOptions)}
-        className={classes.dropdown}
-        style={{ height: showOptions ? "" : "40px" }}
+        className={dropdownTitleClass}
       >
-        <div className={dropdownTitleClass}>
-          <h3>Number of colors</h3>
-          <span className={dropdownIconClass}>
-            <FaChevronDown />
-          </span>
-        </div>
+        <span>Color for analysis</span>
+        <span className={dropdownIconClass}>
+          <FaChevronDown />
+        </span>
+      </div>
+      {showOptions && (
         <div className={dropdownOptionClass}>
-          {optionsForAnalysis.map((option) => (
-            <p key={option} onClick={() => clickHandler(option)}>
+          {optionsForAnalysis.map((option, i) => (
+            <p key={option} onClick={() => clickHandler(i)}>
               {option}
             </p>
           ))}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
