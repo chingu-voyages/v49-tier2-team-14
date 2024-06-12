@@ -15,7 +15,8 @@ export default function MainContent() {
   const [selectedColorHarmony, setSelectedColorHarmony] = useState("");
   const [matchedColors, setMatchedColors] = useState([]);
   const [numberOfColors, setNumberOfColors] = useState(1);
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
   const apiKey = "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";
 
   const groq = new Groq({
@@ -26,8 +27,9 @@ export default function MainContent() {
   const triggerApiCall = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       setMatchedColors([]);
-      colorPicker.current.setColors(colors);
+      colorPicker.current.setColors(colors.slice(0, numberOfColors));
       const chatCompletion = await groq.chat.completions.create({
         messages: [
           {
@@ -37,7 +39,7 @@ export default function MainContent() {
           },
           {
             role: "user",
-            content: `Advise me on the best matching color for each color from ${colors}. It needs to be like 'Best matching color for #000000 is #ffffff' with a short explanation of how and why these colors go together for ${context}. Hex codes of colors can only be used in the first section. In the overall description, give appropriate text and use color names only!`,
+            content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors.toString()}. Format your response as: 'The best matching color(s) for #000000 is/are #ffffff' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
           },
         ],
         model: "llama3-8b-8192",
@@ -49,20 +51,35 @@ export default function MainContent() {
 
       const messageContent = chatCompletion.choices[0].message.content;
       setResponse(messageContent);
+      setLoading(false);
 
       let words = messageContent.split(/\s+/);
 
       const charsToCheck = [",", "*", ":", ")", "\n", "."];
 
-      const removeTrailingChars = (word, charsToRemove) => {
-        if (charsToRemove.some((char) => word.endsWith(char))) {
-          return removeTrailingChars(word.slice(0, -1), charsToRemove);
+      const removeLeadingAndTrailingChars = (word, charsToRemove) => {
+        const startsWithChar = charsToRemove.some((char) =>
+          word.startsWith(char)
+        );
+        const endsWithChar = charsToRemove.some((char) => word.endsWith(char));
+
+        if (startsWithChar || endsWithChar) {
+          if (startsWithChar) {
+            word = word.slice(1);
+          }
+          if (endsWithChar) {
+            word = word.slice(0, -1);
+          }
+          return removeLeadingAndTrailingChars(word, charsToRemove);
         }
+
         return word;
       };
 
-      words = words.map((word) => removeTrailingChars(word, charsToCheck));
-
+      words = words.map((word) =>
+        removeLeadingAndTrailingChars(word, charsToCheck)
+      );
+      console.log(words);
       const onlyMatchedColors = (word) => {
         if (word[0] !== "#") return false;
         if (colors.includes(word)) return false;
@@ -72,6 +89,7 @@ export default function MainContent() {
       };
 
       const matchedColors = words.filter(onlyMatchedColors);
+      console.log(matchedColors);
 
       setMatchedColors((prevMatchedColors) => {
         const updatedColors = [...prevMatchedColors];
@@ -93,46 +111,49 @@ export default function MainContent() {
   };
 
   return (
-    <form className={styles["main-content"]} onSubmit={triggerApiCall}>
-      <ColorPicker
-        colorPicker={colorPicker}
-        setColors={setColors}
-        colors={colors}
-        description={response}
-      />
-      <div>
-        <div className={styles.row}>
-          <div>
-            <SelectedColor
-              numberOfColors={numberOfColors}
-              colorPicker={colorPicker}
-              colors={colors}
+    <div className={styles["main-content"]}>
+      <form onSubmit={triggerApiCall}>
+        <ColorPicker
+          colorPicker={colorPicker}
+          setColors={setColors}
+          colors={colors}
+          description={response}
+        />
+        <div className={styles["main-section"]}>
+          <div className={styles.row}>
+            <div>
+              <SelectedColor
+                numberOfColors={numberOfColors}
+                colorPicker={colorPicker}
+                colors={colors}
+                setColors={setColors}
+              />
+              <ColorContext context={context} setContext={setContext} />
+            </div>
+            <div>
+              <MatchedColors
+                matchedColors={matchedColors}
+                setMatchedColors={setMatchedColors}
+              />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <ColorHarmony
+              selectedColorHarmony={selectedColorHarmony}
+              setSelectedColorHarmony={setSelectedColorHarmony}
+            />
+            <ColorAnalysis
+              setNumberOfColors={setNumberOfColors}
+              colorPickerRef={colorPicker}
               setColors={setColors}
             />
-            <ColorContext context={context} setContext={setContext} />
           </div>
-          <div>
-            <MatchedColors
-              matchedColors={matchedColors}
-              setMatchedColors={setMatchedColors}
-            />
-          </div>
+
+          <button className={styles["submit-button"]} type="submit">
+            {loading ? "Finding colors..." : "Let's Glow!"}
+          </button>
         </div>
-        <div className={styles.row}>
-          <ColorHarmony
-            selectedColorHarmony={selectedColorHarmony}
-            setSelectedColorHarmony={setSelectedColorHarmony}
-          />
-          <ColorAnalysis
-            setNumberOfColors={setNumberOfColors}
-            colorPickerRef={colorPicker}
-            setColors={setColors}
-          />
-        </div>
-      </div>
-      <button className={styles["submit-button"]} type="submit">
-        Let's Glow!
-      </button>
-    </form>
+      </form>
+    </div>
   );
 }

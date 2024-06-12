@@ -6,6 +6,8 @@
   padding: 10px;
   box-shadow: 4px 4px #d92bff;
   color: #828282;
+  cursor: pointer;
+  background-color: #fff;
 }
 
 .dropdown__title {

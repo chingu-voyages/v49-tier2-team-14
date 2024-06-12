@@ -1,5 +1,12 @@
 .main-content {
-  padding-bottom: 100px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.main-section {
+  background: rgb(224, 235, 239);
+  padding: 20px 10%;
+  margin-top: 20px;
 }
 
 .row {
@@ -19,4 +26,10 @@
   font-weight: bold;
   font-family: "Poppins", sans-serif;
   margin-top: 40px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background: #e066fb;
+  transition: 0.2s;
 }
