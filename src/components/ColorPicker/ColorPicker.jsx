@@ -13,7 +13,7 @@ export default function ColorPicker({
   useEffect(() => {
     if (!colorPicker.current) {
       colorPicker.current = new iro.ColorPicker(ref.current, {
-        width: 400,
+        width: 350,
         colors: colors,
         handleRadius: 10,
         activeHandleRadius: 13,
@@ -33,13 +33,16 @@ export default function ColorPicker({
   return (
     <section className={styles.container}>
       <div ref={ref} />
-      <h1 className={styles.title}>
-        {description && "Description for matching colors"}
-        <p className={styles.text} style={{ fontSize: description && "20px" }}>
+      <div>
+        <h2 className={styles.title}>
+          {description ? "Description for matching colors" : null}
+        </h2>
+
+        <p className={styles.text}>
           {description ??
             "Fill out the form below to get advice on glowing color combinations for your chosen context."}
         </p>
-      </h1>
+      </div>
     </section>
   );
 }

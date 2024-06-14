@@ -1,27 +1,32 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   width: 80%;
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 2rem;
   color: #6f2bff;
 }
 
 .text {
   display: flex;
-  flex-grow: 1;
   color: #d92bff;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 }
 
-@media (min-width: 47.8125rem) {
+@media (min-width: 64rem) {
   .container {
     gap: 10rem;
+    flex-direction: row;
+  }
+
+  .text {
+    font-size: 1.7rem;
   }
 }

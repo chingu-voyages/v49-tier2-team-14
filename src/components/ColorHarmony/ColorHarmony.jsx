@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import "./colorHarmony.css";
+import classes from "./colorHarmony.module.css";
 
 const ColorHarmony = ({ selectedColorHarmony, setSelectedColorHarmony }) => {
   const [showOptions, setShowOptions] = useState(false);
@@ -19,30 +19,31 @@ const ColorHarmony = ({ selectedColorHarmony, setSelectedColorHarmony }) => {
     setShowOptions(false);
   };
 
-  useEffect(() => {
-    setSelectedColorHarmony("");
-  }, []);
+  // useEffect(() => {
+  //   setSelectedColorHarmony("");
+  // }, []);
 
   return (
     <div className="colorharmony">
+      <h3 className="label">Color Harmony</h3>
       <div
         onClick={() => setShowOptions(!showOptions)}
-        className="colorharmony-dropdownmenu"
+        className={classes.colorharmony_dropdownmenu}
       >
-        <div className="colorharmony-title">
-          <h3>
+        <div className={classes.colorharmony_title}>
+          <span>
             {selectedColorHarmony
               ? optionsForHarmony.find(
                   (opt) => opt.value === selectedColorHarmony
                 ).label
               : "Color Harmony"}
-          </h3>
+          </span>
         </div>
         <span
           style={{
             transform: showOptions ? "rotate(180deg)" : "",
           }}
-          className="dropdown__icon"
+          className={classes.dropdown_icon}
         >
           <FaChevronDown />
         </span>

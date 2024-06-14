@@ -1,35 +1,47 @@
-.main-content {
-  padding-top: 30px;
-  padding-bottom: 50px;
+.main_content {
+  padding-block: 1.875rem 3.125rem;
 }
 
-.main-section {
+.main_section {
   background: rgb(224, 235, 239);
-  padding: 20px 10%;
-  margin-top: 20px;
+  padding: 1.25rem 10%;
+  margin-top: 1.25rem;
 }
 
-.row {
+.row,
+.row_color {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 40px;
+  gap: 2.5rem;
+  justify-content: flex-start;
+  margin-bottom: 2.5rem;
 }
 
-.submit-button {
+.row_color {
+  flex-direction: column-reverse;
+}
+
+.submit_button {
   width: 250px;
   height: 50px;
   background: #d92bff;
   border: 2px solid #000;
   box-shadow: 4px 4px #000;
   border-radius: 0.5rem;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
-  margin-top: 40px;
-  cursor: pointer;
+  margin-top: 2.5rem;
+  transition: 0.2s;
 }
 
-.submit-button:hover {
+.submit_button:hover {
   background: #e066fb;
-  transition: 0.2s;
+}
+
+@media (min-width: 47.8125rem) {
+  .row,
+  .row_color {
+    flex-direction: row;
+  }
 }

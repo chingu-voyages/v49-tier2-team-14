@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import "./colorcontext.css";
+import { useRef } from "react";
+import classes from "./colorcontext.module.css";
 
 const ColorContext = ({ context, setContext }) => {
   const textareaRef = useRef(null);
@@ -14,16 +14,18 @@ const ColorContext = ({ context, setContext }) => {
     setContext(e.target.value);
   };
   return (
-    <div className="colorcontext">
-      <h1 className="colorcontext-h1"> Context</h1>
+    <div className={classes.colorcontext}>
+      <h3 className={"label"}>Context</h3>
       <textarea
         ref={textareaRef}
-        className="colorcontext-input"
+        className={classes.textarea}
         placeholder="Type your purpose to get the best color combination."
         value={context}
         onChange={handleChange}
+        rows={2}
+        cols={2}
         required
-      />
+      ></textarea>
     </div>
   );
 };

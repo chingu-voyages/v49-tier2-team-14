@@ -1,7 +1,5 @@
 .header {
-  padding-bottom: 50px;
-  padding-top: 20px;
- 
+  padding-block: 1.25rem 3.125rem;
 }
 
 .heading {
@@ -9,27 +7,40 @@
   -webkit-text-fill-color: #5afd0d;
   -webkit-text-stroke-color: #1a1b1d;
   -webkit-text-stroke-width: 0.5px;
-  font-size: 76px;
+  font-size: 4rem;
   font-weight: 700;
   text-align: center;
   font-style: italic;
-  line-height: 1.2;
-  margin-right: 5.5rem;
+  line-height: 0.8;
 }
 
 .subheading {
   color: #6f2bff;
   text-align: center;
-  font-size: 34px;
+  font-size: 1.4rem;
   font-weight: 700;
   font-style: italic;
-  margin-left: 10rem;
-  gap:0.5rem;
+  margin-left: 3rem;
+  gap: 0.5rem;
 }
 
 .description {
-  font-size: 22px;
-  margin: 20px;;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  max-width: 50rem;
 }
 
+@media (min-width: 47.8125rem) {
+  .subheading {
+    margin-left: 18rem;
+    font-size: 2.125rem;
+  }
 
+  .heading {
+    font-size: 4.75rem;
+  }
+
+  .description {
+    font-size: 1.375rem;
+  }
+}

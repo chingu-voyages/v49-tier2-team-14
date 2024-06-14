@@ -1,15 +1,26 @@
-import { useState, useRef, useEffect } from "react";
-import ColorPicker from "../ColorPicker/ColorPicker";
-import SelectedColor from "../SelectedColor/SelectedColor";
-import ColorHarmony from "../ColorHarmony/ColorHarmony";
-import ColorContext from "../ColorContext/ColorContext";
-import ColorAnalysis from "../ColorAnalysis/ColorAnalysis";
-import MatchedColors from "../MatchedColors/MatchedColors";
-import styles from "./main.module.css";
 import Groq from "groq-sdk";
+import { useRef, useState } from "react";
+import toast from "react-hot-toast";
+import ColorAnalysis from "../ColorAnalysis/ColorAnalysis";
+import ColorContext from "../ColorContext/ColorContext";
+import ColorHarmony from "../ColorHarmony/ColorHarmony";
+import ColorPicker from "../ColorPicker/ColorPicker";
+import MatchedColors from "../MatchedColors/MatchedColors";
+import SelectedColor from "../SelectedColor/SelectedColor";
+import styles from "./main.module.css";
+
+const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+
+const groq = new Groq({
+  apiKey: apiKey,
+  dangerouslyAllowBrowser: true,
+});
+
+const hexRegex = /#[0-9a-f]{6}\b/gi;
 
 export default function MainContent() {
   let colorPicker = useRef(null);
+  const ref = useRef(null);
   const [colors, setColors] = useState(["#ffff00"]);
   const [context, setContext] = useState("");
   const [selectedColorHarmony, setSelectedColorHarmony] = useState("");
@@ -17,12 +28,6 @@ export default function MainContent() {
   const [numberOfColors, setNumberOfColors] = useState(1);
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
-  const apiKey = "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";
-
-  const groq = new Groq({
-    apiKey: apiKey,
-    dangerouslyAllowBrowser: true,
-  });
 
   const triggerApiCall = async (e) => {
     e.preventDefault();
@@ -39,7 +44,7 @@ export default function MainContent() {
           },
           {
             role: "user",
-            content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors.toString()}. Format your response as: 'The best matching color(s) for #000000 is/are #ffffff' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
+            content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors.toString()}. Format your response as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
           },
         ],
         model: "llama3-8b-8192",
@@ -51,45 +56,13 @@ export default function MainContent() {
 
       const messageContent = chatCompletion.choices[0].message.content;
       setResponse(messageContent);
-      setLoading(false);
 
-      let words = messageContent.split(/\s+/);
+      // extract all hexcodes from ai response
+      const allHexCodes = messageContent.match(hexRegex);
 
-      const charsToCheck = [",", "*", ":", ")", "\n", "."];
+      const matchedColors = allHexCodes.filter(onlyMatchedColors);
 
-      const removeLeadingAndTrailingChars = (word, charsToRemove) => {
-        const startsWithChar = charsToRemove.some((char) =>
-          word.startsWith(char)
-        );
-        const endsWithChar = charsToRemove.some((char) => word.endsWith(char));
-
-        if (startsWithChar || endsWithChar) {
-          if (startsWithChar) {
-            word = word.slice(1);
-          }
-          if (endsWithChar) {
-            word = word.slice(0, -1);
-          }
-          return removeLeadingAndTrailingChars(word, charsToRemove);
-        }
-
-        return word;
-      };
-
-      words = words.map((word) =>
-        removeLeadingAndTrailingChars(word, charsToCheck)
-      );
-      console.log(words);
-      const onlyMatchedColors = (word) => {
-        if (word[0] !== "#") return false;
-        if (colors.includes(word)) return false;
-        if (word.length !== 7) return false;
-
-        return word;
-      };
-
-      const matchedColors = words.filter(onlyMatchedColors);
-      console.log(matchedColors);
+      window.scrollTo({ top: 20, behaviour: "smooth" });
 
       setMatchedColors((prevMatchedColors) => {
         const updatedColors = [...prevMatchedColors];
@@ -105,55 +78,64 @@ export default function MainContent() {
         });
         return updatedColors;
       });
+
+      toast.success("completed!");
     } catch (error) {
-      console.error("Error fetching completion:", error);
+      toast.error("Error fetching completion:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  return (
-    <div className={styles["main-content"]}>
-      <form onSubmit={triggerApiCall}>
-        <ColorPicker
-          colorPicker={colorPicker}
-          setColors={setColors}
-          colors={colors}
-          description={response}
-        />
-        <div className={styles["main-section"]}>
-          <div className={styles.row}>
-            <div>
-              <SelectedColor
-                numberOfColors={numberOfColors}
-                colorPicker={colorPicker}
-                colors={colors}
-                setColors={setColors}
-              />
-              <ColorContext context={context} setContext={setContext} />
-            </div>
-            <div>
-              <MatchedColors
-                matchedColors={matchedColors}
-                setMatchedColors={setMatchedColors}
-              />
-            </div>
-          </div>
-          <div className={styles.row}>
-            <ColorHarmony
-              selectedColorHarmony={selectedColorHarmony}
-              setSelectedColorHarmony={setSelectedColorHarmony}
-            />
-            <ColorAnalysis
-              setNumberOfColors={setNumberOfColors}
-              colorPickerRef={colorPicker}
-              setColors={setColors}
-            />
-          </div>
+  const onlyMatchedColors = (word) => {
+    if (word[0] !== "#") return false;
+    if (colors.includes(word)) return false;
+    if (word.length !== 7) return false;
 
-          <button className={styles["submit-button"]} type="submit">
-            {loading ? "Finding colors..." : "Let's Glow!"}
-          </button>
+    return word;
+  };
+
+  return (
+    <form onSubmit={triggerApiCall} className={styles.main_content}>
+      <ColorPicker
+        colorPicker={colorPicker}
+        setColors={setColors}
+        colors={colors}
+        description={response}
+      />
+      <div className={styles.main_section} ref={ref}>
+        <div className={styles.row_color}>
+          <SelectedColor
+            numberOfColors={numberOfColors}
+            colorPicker={colorPicker}
+            colors={colors}
+            setColors={setColors}
+          />
+
+          <MatchedColors
+            matchedColors={matchedColors}
+            setMatchedColors={setMatchedColors}
+          />
         </div>
-      </form>
-    </div>
+        <div className={styles.row}>
+          <ColorAnalysis
+            setNumberOfColors={setNumberOfColors}
+            colorPickerRef={colorPicker}
+            setColors={setColors}
+          />
+
+          <ColorContext context={context} setContext={setContext} />
+        </div>
+
+        <ColorHarmony
+          selectedColorHarmony={selectedColorHarmony}
+          setSelectedColorHarmony={setSelectedColorHarmony}
+        />
+
+        <button className={styles.submit_button} type="submit">
+          {loading ? "Finding colors..." : "Let's Glow!"}
+        </button>
+      </div>
+    </form>
   );
 }

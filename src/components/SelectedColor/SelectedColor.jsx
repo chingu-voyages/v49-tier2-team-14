@@ -18,28 +18,34 @@ export default function SelectedColor({
     }
   };
 
-  return colors.slice(0, numberOfColors).map((color, i) => (
-    <div key={i} className={styles["selected-color"]}>
-      <label className={styles.label}>
-        <span
-          className={styles.color}
-          style={{
-            backgroundColor: color,
-          }}
-        />
-        <h1>
-          {colors.length === 1 ? "Selected color" : `${i + 1} Selected color`}
-        </h1>
-      </label>
-      <input
-        type="text"
-        name={`color-${i + 1}`}
-        id={`color-${i + 1}`}
-        placeholder="select color"
-        value={color}
-        onChange={(event) => handleColorInputChange(i, event.target.value)}
-        className={styles["color-hex-field"]}
-      />
+  return (
+    <div>
+      {colors?.map((color, i) => (
+        <div key={i} className={styles.selected_color}>
+          <label className={styles.label}>
+            <span
+              className={styles.color}
+              style={{
+                backgroundColor: color,
+              }}
+            />
+            <span>
+              {colors.length === 1
+                ? "Selected color"
+                : `Selected color (${i + 1})`}
+            </span>
+          </label>
+          <input
+            type="text"
+            name={`color-${i + 1}`}
+            id={`color-${i + 1}`}
+            placeholder="select color"
+            value={color}
+            onChange={(event) => handleColorInputChange(i, event.target.value)}
+            className={styles.color_hex_field}
+          />
+        </div>
+      ))}
     </div>
-  ));
+  );
 }

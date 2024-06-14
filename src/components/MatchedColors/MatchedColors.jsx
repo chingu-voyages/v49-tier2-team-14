@@ -4,7 +4,7 @@ const MatchedColors = ({ matchedColors }) => {
   return (
     <div>
       {matchedColors.map((color, i) => (
-        <div key={i} className={styles["selected-color"]}>
+        <div key={i} className={styles.selected_color}>
           <label className={styles.label}>
             <span
               className={styles.color}
@@ -12,14 +12,11 @@ const MatchedColors = ({ matchedColors }) => {
                 backgroundColor: color,
               }}
             />
-            <h1>{`${i + 1} Matched color`}</h1>
+            <span>
+              Matched color {matchedColors.length > 1 ? `(${i + 1})` : ""}
+            </span>
           </label>
-          <p
-            style={{ paddingTop: "8px" }}
-            className={styles["color-hex-field"]}
-          >
-            {color}
-          </p>
+          <p className={styles.color_hex_field}>{color}</p>
         </div>
       ))}
     </div>

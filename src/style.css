@@ -4,6 +4,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: inherit;
+
+  --primary: #d92bff;
+  --gray: #828282;
 }
 
 * {
@@ -15,6 +19,10 @@
 *::after,
 *::before {
   box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -31,8 +39,6 @@ h4,
 h5,
 h6 {
   font-family: "Rasa", serif;
-  padding: 0px;
-  /* margin-left:200px; */
 }
 
 #root {
@@ -48,4 +54,26 @@ h6 {
 .container {
   width: 80%;
   margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.label {
+  margin-bottom: 0.1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+@media (min-width: 47.8125rem) {
+  .label {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .label {
+    font-size: 2.3rem;
+  }
 }
