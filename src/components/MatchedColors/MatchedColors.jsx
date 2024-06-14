@@ -16,7 +16,7 @@ const MatchedColors = ({ matchedColors }) => {
               Matched color {matchedColors.length > 1 ? `(${i + 1})` : ""}
             </span>
           </label>
-          <p className={styles.color_hex_field}>{color}</p>
+          <p className={styles.color_field}>{color}</p>
         </div>
       ))}
     </div>

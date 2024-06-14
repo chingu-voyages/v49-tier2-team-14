@@ -25,7 +25,8 @@
   border-radius: 50%;
 }
 
-.color_hex_field {
+.color_hex_field,
+.color_field {
   border: 1px solid var(--primary);
   box-shadow: 4px 4px var(--primary);
   padding-left: 0.625rem;
@@ -34,6 +35,12 @@
   outline: none;
   color: var(--gray);
   padding-block: 0.9rem;
+  font-size: 1rem;
+}
+
+.color_field {
+  padding-block: 0.6rem;
+  background-color: rgb(253, 253, 253);
 }
 
 @media (min-width: 47.8125rem) {
