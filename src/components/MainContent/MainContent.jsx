@@ -79,9 +79,9 @@ export default function MainContent() {
         return updatedColors;
       });
 
-      toast.success("completed!");
+      // toast.success("completed!");
     } catch (error) {
-      toast.error("Error fetching completion:", error);
+      toast.error(`Error fetching completion: ${error?.message}`);
     } finally {
       setLoading(false);
     }
