@@ -21,7 +21,7 @@ const hexRegex = /#[0-9a-f]{6}\b/gi;
 export default function MainContent() {
   let colorPicker = useRef(null);
   const ref = useRef(null);
-  const [colors, setColors] = useState(["#ffff00"]);
+  const [colors, setColors] = useState(["#ff0000"]);
   const [context, setContext] = useState("");
   const [selectedColorHarmony, setSelectedColorHarmony] = useState("");
   const [matchedColors, setMatchedColors] = useState([]);

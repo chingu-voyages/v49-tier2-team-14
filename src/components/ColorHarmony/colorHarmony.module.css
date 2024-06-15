@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0.5rem;
+  /* border-radius: 0.5rem; */
   padding: 0.65rem 0.625rem;
   border: 1px solid var(--primary);
   cursor: pointer;
@@ -23,7 +23,7 @@
   font-size: 0.75rem;
 }
 
-.dropdown_options {
+.dropdown__options {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -34,8 +34,9 @@
   border: 1px solid #d92bff;
 }
 
-.dropdown_option {
+.dropdown__option {
   color: #828282;
   margin: 5px;
   cursor: pointer;
+  background-color: #fff;
 }

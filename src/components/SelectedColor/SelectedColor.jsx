@@ -20,7 +20,7 @@ export default function SelectedColor({
 
   return (
     <div>
-      {colors?.map((color, i) => (
+      {colors.slice(0, numberOfColors)?.map((color, i) => (
         <div key={i} className={styles.selected_color}>
           <label className={styles.label}>
             <span

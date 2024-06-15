@@ -12,10 +12,12 @@
   max-height: 2.8rem;
   outline: none;
   resize: none;
-  overflow-y: scroll;
-  padding: 0.625rem;
+  overflow-y: scroll hidden;
+  padding: 8px 10px 0 10px;
   line-height: 1.3;
   color: var(--gray);
+  height: 50px;
+  font-size: 0.9rem;
 }
 
 .textarea::placeholder {

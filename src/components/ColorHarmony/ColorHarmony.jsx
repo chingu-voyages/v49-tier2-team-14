@@ -19,10 +19,6 @@ const ColorHarmony = ({ selectedColorHarmony, setSelectedColorHarmony }) => {
     setShowOptions(false);
   };
 
-  // useEffect(() => {
-  //   setSelectedColorHarmony("");
-  // }, []);
-
   return (
     <div className="colorharmony">
       <h3 className="label">Color Harmony</h3>
@@ -49,12 +45,12 @@ const ColorHarmony = ({ selectedColorHarmony, setSelectedColorHarmony }) => {
         </span>
       </div>
       {showOptions && (
-        <div className="dropdown__options">
+        <div className={classes["dropdown__options"]}>
           {optionsForHarmony.map((option) => (
             <p
               key={option.value}
               onClick={() => handleColorHarmonyChange(option.value)}
-              className="dropdown__option"
+              className={classes["dropdown__option"]}
             >
               {option.label}
             </p>
