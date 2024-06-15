@@ -28,10 +28,12 @@ export default function MainContent() {
   const [numberOfColors, setNumberOfColors] = useState(1);
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const triggerApiCall = async (e) => {
     e.preventDefault();
     try {
+      setError(false);
       setLoading(true);
       setMatchedColors([]);
       colorPicker.current.setColors(colors.slice(0, numberOfColors));
@@ -44,7 +46,9 @@ export default function MainContent() {
           },
           {
             role: "user",
-            content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors.toString()}. Format your response as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
+            content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors
+              .slice(0, numberOfColors)
+              .toString()}. Format your response for each recieved color as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
           },
         ],
         model: "llama3-8b-8192",
@@ -55,14 +59,19 @@ export default function MainContent() {
       });
 
       const messageContent = chatCompletion.choices[0].message.content;
-      setResponse(messageContent);
 
-      // extract all hexcodes from ai response
+      if (messageContent.length < 400) {
+        setError("The description is too short. Please try again.");
+        setLoading(false);
+        window.scrollTo({ top: 200, behaviour: "smooth" });
+        return;
+      }
+      setResponse(messageContent);
       const allHexCodes = messageContent.match(hexRegex);
 
       const matchedColors = allHexCodes.filter(onlyMatchedColors);
 
-      window.scrollTo({ top: 20, behaviour: "smooth" });
+      window.scrollTo({ top: 200, behaviour: "smooth" });
 
       setMatchedColors((prevMatchedColors) => {
         const updatedColors = [...prevMatchedColors];
@@ -78,10 +87,17 @@ export default function MainContent() {
         });
         return updatedColors;
       });
-
-      // toast.success("completed!");
     } catch (error) {
-      toast.error(`Error fetching completion: ${error?.message}`);
+      setError(true);
+      if (error.response && error.response.status === 429) {
+        setError("You have exceeded the rate limit. Please try again later.");
+        toast.error(
+          "You have exceeded the rate limit. Please try again later."
+        );
+      } else {
+        setError(error.message);
+        toast.error(`Error fetching completion: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -102,6 +118,7 @@ export default function MainContent() {
         setColors={setColors}
         colors={colors}
         description={response}
+        error={error}
       />
       <div className={styles.main_section} ref={ref}>
         <div className={styles.row_color}>
@@ -126,13 +143,15 @@ export default function MainContent() {
 
           <ColorContext context={context} setContext={setContext} />
         </div>
-
         <ColorHarmony
           selectedColorHarmony={selectedColorHarmony}
           setSelectedColorHarmony={setSelectedColorHarmony}
         />
-
-        <button className={styles.submit_button} type="submit">
+        <button
+          disabled={loading}
+          className={styles.submit_button}
+          type="submit"
+        >
           {loading ? "Finding colors..." : "Let's Glow!"}
         </button>
       </div>

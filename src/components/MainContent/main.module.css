@@ -39,6 +39,10 @@
   background: #e066fb;
 }
 
+.submit_button:disabled {
+  color: #000;
+}
+
 @media (min-width: 47.8125rem) {
   .row,
   .row_color {

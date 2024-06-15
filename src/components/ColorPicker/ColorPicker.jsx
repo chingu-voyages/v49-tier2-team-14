@@ -7,8 +7,10 @@ export default function ColorPicker({
   setColors,
   colors,
   description,
+  error,
 }) {
   const ref = useRef(null);
+  console.log(description);
 
   useEffect(() => {
     if (!colorPicker.current) {
@@ -31,16 +33,21 @@ export default function ColorPicker({
   }, [colors]);
 
   return (
-    <section className={styles.container}>
+    <section
+      className={styles.container}
+      style={{ justifyContent: !error && "justify-between" }}
+    >
       <div ref={ref} />
       <div>
         <h2 className={styles.title}>
-          {description ? "Description for matching colors" : null}
+          {description && "Description for matching colors"}
         </h2>
 
         <p className={styles.text}>
-          {description ??
-            "Fill out the form below to get advice on glowing color combinations for your chosen context."}
+          {!description &&
+            'Fill out the form below to get advice on glowing color combinations for your chosen context."'}
+          {!error && description && description}
+          {error && error}
         </p>
       </div>
     </section>
