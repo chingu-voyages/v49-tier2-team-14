@@ -2,21 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: column-reverse;
   gap: 2rem;
-
-  padding: 0 1rem;
+  margin-bottom: 40px;
 }
 
 .text {
+  display: flex;
+  flex-grow: 1;
   color: #d92bff;
-  max-width: 35rem;
-  font-size: 28px;
+  font-size: 1.7rem;
 }
 
 @media (min-width: 47.8125rem) {
   .container {
-    flex-direction: row;
-    gap: 4rem;
+    gap: 10rem;
   }
 }
