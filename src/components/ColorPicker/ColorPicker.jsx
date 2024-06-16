@@ -10,7 +10,7 @@ export default function ColorPicker({
   error,
 }) {
   const ref = useRef(null);
-  console.log(description);
+  console.log(description); //this comes out as 'null' in console every time ColorPicker is interacted with
 
   useEffect(() => {
     if (!colorPicker.current) {
@@ -45,7 +45,7 @@ export default function ColorPicker({
 
         <p className={styles.text}>
           {!description &&
-            'Fill out the form below to get advice on glowing color combinations for your chosen context."'}
+            'Fill out the form below to get advice on glowing color combinations for your chosen context.'}
           {!error && description && description}
           {error && error}
         </p>
