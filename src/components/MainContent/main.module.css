@@ -1,0 +1,51 @@
+.main_content {
+  padding-block: 1.875rem 3.125rem;
+}
+
+.main_section {
+  background: rgb(224, 235, 239);
+  padding: 1.25rem 10%;
+  margin-top: 1.25rem;
+}
+
+.row,
+.row_color {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  justify-content: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.row_color {
+  flex-direction: column-reverse;
+}
+
+.submit_button {
+  width: 250px;
+  height: 50px;
+  background: #d92bff;
+  border: 2px solid #000;
+  box-shadow: 4px 4px #000;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-top: 2.5rem;
+  transition: 0.2s;
+}
+
+.submit_button:hover {
+  background: #e066fb;
+}
+
+.submit_button:disabled {
+  color: #000;
+}
+
+@media (min-width: 47.8125rem) {
+  .row,
+  .row_color {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,79 @@
+:root {
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: inherit;
+
+  --primary: #d92bff;
+  --gray: #828282;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Rasa", serif;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.IroSlider {
+  display: none !important;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.label {
+  margin-bottom: 0.1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+@media (min-width: 47.8125rem) {
+  .label {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .label {
+    font-size: 2rem;
+  }
+}

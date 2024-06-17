@@ -1,0 +1,42 @@
+.colorharmony_dropdownmenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-radius: 0.5rem; */
+  padding: 0.65rem 0.625rem;
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  width: 250px;
+  box-shadow: 4px 4px var(--primary);
+  outline: none;
+  background-color: #fff;
+}
+
+.colorharmony_title {
+  color: #828282;
+  font-size: 0.9375rem;
+}
+.dropdown_icon {
+  display: flex;
+  transition: 0.2s ease;
+  color: #828282;
+  font-size: 0.75rem;
+}
+
+.dropdown__options {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #fff;
+  width: 250px;
+  box-shadow: 4px 4px #d92bff;
+  border: 1px solid #d92bff;
+}
+
+.dropdown__option {
+  color: #828282;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #fff;
+}
