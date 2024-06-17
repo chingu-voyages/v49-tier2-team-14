@@ -1,43 +1,45 @@
-# voyage-tasks
+# Color matching app - GlowGuide
 
-Your project's `readme` is as important to success as your code. For
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+## Project Description 
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point -
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+GlowGuide is a web application that gives users various option like choosing number of colors and color harmony, so they can get best matching colors based on a chosen context. After user picks their desired color and context they get an AI response with compatible colors, recommendations and also appropriate description. 
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Tech Used 
 
-> Own it & Make it your Own!
+[![CSS Badge](https://img.shields.io/badge/-CSS-007acc?style=for-the-badge&labelColor=black&logo=css3&logoColor=007acc)](#)
+[![React Badge](https://img.shields.io/badge/-React-red?style=for-the-badge&labelColor=white&logo=react&logoColor=red)](#)
 
-## Team Documents
+## Dependencies
+This is a React App boostrapped with Vite
 
-You may find these helpful as you work together to organize your project.
+Add-on packages include:
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+- [Iro js](https://iro.js.org/)
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+- [Groq Api](https://wow.groq.com/)
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+- [Google Fonts](https://fonts.google.com/)
+  
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+- [React Toast](https://react-hot-toast.com/)
+
+## Features
+
+- Color selection: Users are able to select one or more colors from the wheel based on number of colors or input their own color hexadecimal codes
+- Color harmony: Users are able to select color harmony which will AI use for better color recommendations
+- Context interpretation: Users are able to provide a context for using that selected color and the AI will use that context for better color recommendations
+- Color recommendations / Matching colors: The AI will give matching colors, presenting their characteristics with some description.
 
 ## Our Team
-
-Everyone on your team should add their name along with a link to their GitHub
-& optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
-your repo access and to practice PR'ing with your team _before_ you start
-coding!
 
 - Miko: [GitHub](https://github.com/jamienorthman) / [LinkedIn](https://linkedin.com/in/miko-ann-jeffries)
 - Nemanja: [GitHub](https://github.com/nemanjagradic) / [LinkedIn](https://www.linkedin.com/in/nemanja-gradic-33230b1bb/)
 - Lakshmidevi:[GitHub](https://github.com/devi-lakshmi) / [LinkedIn](https://www.linkedin.com/in/lakshmidevikanala)
-
 - Efezino : [GitHub](https://github.com/efezinoidisi) / [LinkedIn](https://linkedin.com/in/endurance-idisi)
 
-- Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+
+
+
+
+
