@@ -48,7 +48,7 @@ export default function MainContent() {
             role: "user",
             content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors
               .slice(0, numberOfColors)
-              .toString()}. Format your response for each recieved color as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
+              .toString()}. Format your response for each received color as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
           },
         ],
         model: "llama3-8b-8192",
@@ -63,30 +63,35 @@ export default function MainContent() {
       if (messageContent.length < 400) {
         setError("The description is too short. Please try again.");
         setLoading(false);
-        window.scrollTo({ top: 200, behaviour: "smooth" });
+        window.scrollTo({ top: 200, behavior: "smooth" });
         return;
       }
       setResponse(messageContent);
       const allHexCodes = messageContent.match(hexRegex);
 
-      const matchedColors = allHexCodes.filter(onlyMatchedColors);
+      const uniqueMatchedColors = allHexCodes.filter(onlyMatchedColors);
 
-      window.scrollTo({ top: 200, behaviour: "smooth" });
+      window.scrollTo({ top: 200, behavior: "smooth" });
 
       setMatchedColors((prevMatchedColors) => {
-        const updatedColors = [...prevMatchedColors];
-        matchedColors.forEach((color) => {
-          if (!updatedColors.includes(color)) {
-            updatedColors.push(color);
+        const newMatchedColors = [...prevMatchedColors];
+
+        uniqueMatchedColors.forEach((color) => {
+          if (!newMatchedColors.includes(color)) {
+            newMatchedColors.push(color);
           }
         });
-        updatedColors.forEach((color) => {
-          if (!colorPicker.current.colors.includes(color)) {
-            colorPicker.current.addColor(color);
-          }
-        });
-        return updatedColors;
+        return newMatchedColors;
       });
+
+      const updatedColors = colors.slice(0, numberOfColors);
+      uniqueMatchedColors.forEach((color) => {
+        if (!updatedColors.includes(color)) {
+          updatedColors.push(color);
+        }
+      });
+
+      colorPicker.current.setColors(updatedColors);
     } catch (error) {
       setError(true);
       if (error.response && error.response.status === 429) {
@@ -105,8 +110,8 @@ export default function MainContent() {
 
   const onlyMatchedColors = (word) => {
     if (word[0] !== "#") return false;
-    if (colors.includes(word)) return false;
     if (word.length !== 7) return false;
+    if (colors.includes(word)) return false;
 
     return word;
   };

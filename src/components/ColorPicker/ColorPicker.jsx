@@ -45,7 +45,7 @@ export default function ColorPicker({
 
         <p className={styles.text}>
           {!description &&
-            'Fill out the form below to get advice on glowing color combinations for your chosen context.'}
+            "Fill out the form below to get advice on glowing color combinations for your chosen context."}
           {!error && description && description}
           {error && error}
         </p>
