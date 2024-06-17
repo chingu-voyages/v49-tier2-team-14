@@ -36,6 +36,7 @@
   color: var(--gray);
   padding-block: 0.9rem;
   font-size: 1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .color_field {

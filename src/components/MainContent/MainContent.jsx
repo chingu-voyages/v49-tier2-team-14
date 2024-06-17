@@ -33,6 +33,7 @@ export default function MainContent() {
   const triggerApiCall = async (e) => {
     e.preventDefault();
     try {
+      setResponse(null);
       setError(false);
       setLoading(true);
       setMatchedColors([]);
@@ -48,7 +49,7 @@ export default function MainContent() {
             role: "user",
             content: `In 100 to 150 words, advise me on the best matching colors that are ${selectedColorHarmony} harmony to the color(s) ${colors
               .slice(0, numberOfColors)
-              .toString()}. Format your response for each received color as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
+              .toString()}. For each received color, provide to three maximum matching colors. Format your response as: 'The best matching color(s) for #value(s) is/are #value(s)' with a brief explanation of how and why these colors complement each other in the context of ${context}.`,
           },
         ],
         model: "llama3-8b-8192",
@@ -117,7 +118,7 @@ export default function MainContent() {
   };
 
   return (
-    <form onSubmit={triggerApiCall} className={styles.main_content}>
+    <form onSubmit={triggerApiCall}>
       <ColorPicker
         colorPicker={colorPicker}
         setColors={setColors}

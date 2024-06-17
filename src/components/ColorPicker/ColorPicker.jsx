@@ -39,16 +39,21 @@ export default function ColorPicker({
     >
       <div ref={ref} />
       <div>
-        <h2 className={styles.title}>
-          {description && "Description for matching colors"}
-        </h2>
-
-        <p className={styles.text}>
-          {!description &&
-            "Fill out the form below to get advice on glowing color combinations for your chosen context."}
-          {!error && description && description}
-          {error && error}
-        </p>
+        {!description && !error && (
+          <p className={styles.text}>
+            Fill out the form below to get advice on glowing color combinations
+            for your chosen context.
+          </p>
+        )}
+        {description && !error && (
+          <div className={styles["desc-animate"]}>
+            <h2 className={styles.title}>
+              {description && "Description for matching colors"}
+            </h2>
+            <p className={`${styles.text} `}>{description}</p>
+          </div>
+        )}
+        {error && <p className={styles.text}>{error}</p>}
       </div>
     </section>
   );
