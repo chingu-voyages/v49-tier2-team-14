@@ -142,6 +142,7 @@ export default function MainContent() {
         </div>
         <div className={styles.row}>
           <ColorAnalysis
+            colors={colors}
             setNumberOfColors={setNumberOfColors}
             colorPickerRef={colorPicker}
             setColors={setColors}

@@ -2,7 +2,12 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import classes from "./coloranalysis.module.css";
 
-const ColorAnalysis = ({ setNumberOfColors, setColors, colorPickerRef }) => {
+const ColorAnalysis = ({
+  colors,
+  setNumberOfColors,
+  setColors,
+  colorPickerRef,
+}) => {
   const [showOptions, setShowOptions] = useState(false);
   const optionsForAnalysis = ["One", "Two", "Three"];
 
@@ -11,11 +16,21 @@ const ColorAnalysis = ({ setNumberOfColors, setColors, colorPickerRef }) => {
     const colorRows = index + 1;
     setNumberOfColors(colorRows);
 
-    const colorToAdd = ["#ff0000"];
-    if (colorRows >= 2) colorToAdd.push("#00ff00");
-    if (colorRows >= 3) colorToAdd.push("#0000ff");
+    let colorToAdd = [...colors];
 
-    setColors(colorToAdd.slice(0, colorRows));
+    if (colorRows === 2 && !colorToAdd.includes("#00ff00")) {
+      colorToAdd.push("#00ff00");
+    }
+    if (colorRows === 3) {
+      if (!colorToAdd.includes("#00ff00")) {
+        colorToAdd.push("#00ff00");
+      }
+      if (!colorToAdd.includes("#0000ff")) {
+        colorToAdd.push("#0000ff");
+      }
+    }
+
+    setColors(colorToAdd);
     colorPickerRef.current.setColors(colorToAdd.slice(0, colorRows));
   };
 
